@@ -6,10 +6,20 @@ pipeline {
                 bat './gradlew build'
             }
         }
-        stage('Test') {
+        stage('test') {
             steps {
                 bat './gradlew check'
             }
+        }
+        stage('deploy') {
+            steps {
+                bat './gradlew war'
+            }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
         }
     }
 }
