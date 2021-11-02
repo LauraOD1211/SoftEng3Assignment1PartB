@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'war'
 }
 
 repositories {
@@ -22,3 +23,6 @@ test {
     useJUnitPlatform()
 }
 
+war {
+    enabled=true
+}
